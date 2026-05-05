@@ -1,46 +1,282 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Inscrição</title>
+  <title>Ficha de Inscrição</title>
 
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
   />
+
+  <style>
+    body {
+      background: #f3f3f3;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .ficha {
+      max-width: 850px;
+      margin: 30px auto;
+      background: white;
+      padding: 40px;
+      border: 2px solid #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .marca-dagua {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.08;
+      width: 450px;
+      z-index: 0;
+    }
+
+    .conteudo {
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 25px;
+      font-size: 38px;
+    }
+
+    .check-group {
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+    .linha {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .linha label {
+      font-size: 18px;
+      margin-right: 10px;
+      white-space: nowrap;
+    }
+
+    .linha input[type="text"],
+    .linha input[type="email"],
+    .linha textarea {
+      border: none;
+      border-bottom: 2px solid #000;
+      border-radius: 0;
+      background: transparent;
+      flex: 1;
+      font-size: 18px;
+      padding: 2px 5px;
+    }
+
+    .linha input:focus,
+    .linha textarea:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    textarea {
+      resize: none;
+      height: 40px;
+    }
+
+    .opcoes {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .dias-semana {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .dias-semana td {
+      border: 1px solid #000;
+      padding: 8px;
+      font-size: 18px;
+    }
+
+    .btn-enviar {
+      margin-top: 30px;
+      width: 100%;
+      font-size: 18px;
+      padding: 12px;
+    }
+
+    @media (max-width: 768px) {
+
+      .ficha {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .linha label,
+      .opcoes,
+      .check-group {
+        font-size: 16px;
+      }
+
+      .linha input,
+      textarea {
+        font-size: 16px;
+      }
+
+      .dias-semana td {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <div class="container py-5">
+  <a href="admin.html" style="float: right;margin: 15px 15px;">Lista de Inscrições</a><br>
 
-    <h1 class="mb-4">Ficha de Inscrição</h1>
+  <div class="ficha">
 
-    <form id="formInscricao">
+    <!-- Marca d'água -->
+    <img
+      src="logo.png"
+      alt="Logo"
+      class="marca-dagua"
+    />
 
-      <div class="mb-3">
-        <label class="form-label">Nome</label>
-        <input type="text" class="form-control" id="nome" required>
-      </div>
+    <div class="conteudo">
 
-      <div class="mb-3">
-        <label class="form-label">Telefone</label>
-        <input type="text" class="form-control" id="telefone" required>
-      </div>
+      <h1>FICHA 1 - DE INSCRIÇÃO</h1>
 
-      <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" required>
-      </div>
+      <form id="formInscricao">
 
-      <button type="submit" class="btn btn-primary">
-        Enviar Inscrição
-      </button>
+        <div class="check-group">
+          <input type="checkbox" id="visitante">
+          <label for="visitante">VISITANTE</label>
+        </div>
 
-    </form>
+        <div class="check-group">
+          <input type="checkbox" id="atendimento">
+          <label for="atendimento">ATENDIMENTO</label>
+        </div>
 
+        <div class="linha">
+          <label>Nome:</label>
+          <input type="text" id="nome" required>
+        </div>
+
+        <div class="linha">
+          <label>Endereço:</label>
+          <input type="text" id="endereco">
+        </div>
+
+        <div class="linha">
+          <label>Telefone de Contato:</label>
+          <input type="text" id="telefone">
+        </div>
+
+        <div class="linha">
+          <label>E-mail:</label>
+          <input type="email" id="email">
+        </div>
+
+        <div class="opcoes">
+          1ª vez no Projeto?
+          <input type="checkbox"> Sim
+          <input type="checkbox"> Não
+
+          &nbsp;&nbsp;
+
+          Veio hoje porque motivo?
+          <input
+            type="text"
+            style="width: 220px; border:none; border-bottom:1px solid #000;"
+          >
+        </div>
+
+        <div class="linha">
+          <textarea></textarea>
+        </div>
+
+        <div class="opcoes">
+          Deseja ser atendido(a) após o culto?
+          <input type="checkbox"> Sim
+          <input type="checkbox"> Não
+        </div>
+
+        <div class="opcoes">
+          Deseja um novo atendimento na próxima semana?
+          <input type="checkbox"> Sim
+          <input type="checkbox"> Não
+        </div>
+
+        <div class="opcoes">
+          Aceita contato?
+          <input type="checkbox"> Sim
+          <input type="checkbox"> Não
+        </div>
+
+        <div class="opcoes">
+          Aceita visita após o atendimento?
+          <input type="checkbox"> Sim
+          <input type="checkbox"> Não
+        </div>
+
+        <div class="linha">
+          <label>Que horário?</label>
+          <input
+            type="text"
+            style="max-width:120px"
+          >
+
+          <label class="ms-3">horas.</label>
+        </div>
+
+        <div class="linha">
+          <label>Que dia da semana?</label>
+        </div>
+
+        <table class="dias-semana">
+          <tr>
+            <td><input type="checkbox"> Segunda-feira</td>
+            <td><input type="checkbox"> Terça-feira</td>
+            <td><input type="checkbox"> Quarta-Feira</td>
+          </tr>
+
+          <tr>
+            <td><input type="checkbox"> Quinta-Feira</td>
+            <td><input type="checkbox"> Sexta-Feira</td>
+            <td><input type="checkbox"> Sábado</td>
+          </tr>
+
+          <tr>
+            <td><input type="checkbox"> Domingo</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+
+        <button
+          type="submit"
+          class="btn btn-dark btn-enviar"
+        >
+          Enviar Inscrição
+        </button>
+
+      </form>
+
+    </div>
   </div>
 
   <script>
@@ -52,29 +288,36 @@
 
         const data = {
           nome: document.getElementById("nome").value,
+          endereco: document.getElementById("endereco").value,
           telefone: document.getElementById("telefone").value,
           email: document.getElementById("email").value
         };
 
         try {
 
-          const response = await fetch("https://SUA_API.com/inscricao", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          });
+          const response = await fetch(
+            "http://localhost:3000/inscricao",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(data)
+            }
+          );
 
           if (response.ok) {
             alert("Inscrição enviada com sucesso!");
+            document.getElementById("formInscricao").reset();
           } else {
             alert("Erro ao enviar inscrição.");
           }
 
         } catch (error) {
+
           console.error(error);
           alert("Erro na conexão com API.");
+
         }
 
       });
